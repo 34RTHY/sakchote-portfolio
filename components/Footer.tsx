@@ -1,4 +1,5 @@
 import { socialLinks } from "@/data/social";
+import { siteConfig } from "@/data/config";
 import SocialIcon from "@/components/SocialIcon";
 
 export default function Footer() {
@@ -6,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-neutral-800 py-8 px-6">
       <div className="max-w-5xl mx-auto flex items-center justify-between text-sm text-neutral-500">
         <p>
-          &copy; {new Date().getFullYear()} Sakchote Khemamrach
+          &copy; {new Date().getFullYear()} {siteConfig.fullName}
         </p>
         <div className="flex gap-4">
           {socialLinks.map((link) => (

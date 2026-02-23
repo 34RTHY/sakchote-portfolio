@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { siteConfig, navSections } from "@/data/config";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-  { href: "/resume.pdf", label: "Resume" },
+  ...navSections.map((s) => ({ href: `#${s.id}`, label: s.label })),
+  { href: siteConfig.resumePath, label: "Resume" },
 ];
 
 export default function Header() {
@@ -35,7 +33,7 @@ export default function Header() {
           href="#"
           className="font-heading text-xl font-bold tracking-tight text-neutral-100"
         >
-          Sakchote
+          {siteConfig.name}
         </a>
 
         {/* Desktop nav */}

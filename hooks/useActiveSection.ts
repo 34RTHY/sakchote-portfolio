@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { navSections } from "@/data/config";
 
-const SECTIONS = ["about", "projects", "experience", "contact"];
+const SECTIONS = navSections.map((s) => s.id);
 
 export function useActiveSection() {
   const [active, setActive] = useState("");

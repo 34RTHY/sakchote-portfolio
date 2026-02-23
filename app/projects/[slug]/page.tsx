@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
+import { siteConfig } from "@/data/config";
 import ProjectNav from "@/components/ProjectNav";
 
 export function generateStaticParams() {
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
-    title: `${project.title} — Sakchote`,
+    title: `${project.title} — ${siteConfig.name}`,
     description: project.tagline,
   };
 }
@@ -116,7 +117,7 @@ export default async function ProjectPage({ params }: Props) {
       </div>
 
       {/* Screenshot gallery */}
-      {project.screenshots && project.screenshots.length > 0 ? (
+      {project.screenshots && project.screenshots.length > 0 && (
         <div className="mb-16">
           <h2 className="font-heading text-2xl font-bold mb-6">Screenshots</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -131,20 +132,6 @@ export default async function ProjectPage({ params }: Props) {
                   fill
                   className="object-cover"
                 />
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="mb-16">
-          <h2 className="font-heading text-2xl font-bold mb-6">Screenshots</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {[1, 2].map((n) => (
-              <div
-                key={n}
-                className="bg-neutral-900 border border-neutral-800 rounded-lg h-48 flex items-center justify-center text-neutral-700"
-              >
-                <span className="text-sm">Screenshot {n}</span>
               </div>
             ))}
           </div>

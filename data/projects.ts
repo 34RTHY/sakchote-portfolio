@@ -85,23 +85,4 @@ export const projects: Project[] = [
       "Placeholder: Integration with cluster workloads",
     ],
   },
-  {
-    slug: "placeholder-project",
-    title: "Placeholder Project",
-    tagline:
-      "A temporary placeholder project. Replace with your next real project.",
-    description: [
-      "Placeholder for a future project. Replace this with your actual project description, architecture decisions, and technical challenges.",
-      "Add additional paragraphs as needed to describe the project in detail.",
-    ],
-    stack: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-    role: "Full-Stack Engineer",
-    timeline: "2024",
-    links: [],
-    highlights: [
-      "Placeholder: Key technical decision",
-      "Placeholder: Notable challenge solved",
-      "Placeholder: Impact or result",
-    ],
-  },
 ];

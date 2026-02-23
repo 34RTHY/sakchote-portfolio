@@ -1,5 +1,6 @@
 import SectionWrapper from "@/components/SectionWrapper";
 import { skillCategories } from "@/data/skills";
+import { awards } from "@/data/awards";
 
 export default function AboutSection() {
   return (
@@ -39,34 +40,25 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Awards */}
-      <div className="mt-16">
-        <h3 className="font-heading text-2xl font-bold mb-6">Awards</h3>
-        <div className="space-y-4">
-          {[
-            {
-              title: "Placeholder Hackathon — 1st Place",
-              event: "Event Name 2024",
-              detail: "Brief description of the project and what you built.",
-            },
-            {
-              title: "Placeholder Hackathon — Winner",
-              event: "Event Name 2023",
-              detail: "Brief description of the project and what you built.",
-            },
-          ].map((award) => (
-            <div key={award.title} className="flex items-start gap-3">
-              <span className="text-emerald-400 mt-1 shrink-0">-</span>
-              <div>
-                <p className="text-neutral-200 font-medium">{award.title}</p>
-                <p className="text-sm text-neutral-500">
-                  {award.event} — {award.detail}
-                </p>
+      {/* Awards — hidden when empty */}
+      {awards.length > 0 && (
+        <div className="mt-16">
+          <h3 className="font-heading text-2xl font-bold mb-6">Awards</h3>
+          <div className="space-y-4">
+            {awards.map((award) => (
+              <div key={award.title} className="flex items-start gap-3">
+                <span className="text-emerald-400 mt-1 shrink-0">-</span>
+                <div>
+                  <p className="text-neutral-200 font-medium">{award.title}</p>
+                  <p className="text-sm text-neutral-500">
+                    {award.event} — {award.detail}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </SectionWrapper>
   );
 }

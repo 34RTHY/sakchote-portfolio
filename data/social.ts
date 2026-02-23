@@ -1,7 +1,7 @@
 export interface SocialLink {
   label: string;
   href: string;
-  icon: "email" | "github" | "linkedin";
+  icon: "email" | "github" | "linkedin" | "line";
 }
 
 export const socialLinks: SocialLink[] = [
@@ -19,5 +19,10 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn",
     href: "https://linkedin.com/in/sakchote-khemmarach",
     icon: "linkedin",
+  },
+  {
+    label: "Line",
+    href: "https://line.me/ti/p/~sakchote2549",
+    icon: "line",
   },
 ];
