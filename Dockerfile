@@ -13,6 +13,7 @@ RUN npm run build
 
 # Stage 3: Production runner
 FROM node:20-alpine AS runner
+LABEL org.opencontainers.image.source=https://github.com/34RTHY/sakchote-portfolio
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000

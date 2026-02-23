@@ -1,0 +1,6 @@
+services:
+  portfolio:
+    build: .
+    image: ghcr.io/34rthy/sakchote-portfolio:latest
+    ports:
+      - "3000:3000"
