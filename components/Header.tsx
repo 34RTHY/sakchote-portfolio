@@ -24,14 +24,14 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-shadow ${
         scrolled
-          ? "bg-neutral-950/90 backdrop-blur-md shadow-lg shadow-black/20"
+          ? "bg-surface-950/90 backdrop-blur-md shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
           href="#"
-          className="font-heading text-xl font-bold tracking-tight text-neutral-100"
+          className="text-xl font-semibold tracking-tight text-warm-100"
         >
           {siteConfig.name}
         </a>
@@ -45,7 +45,7 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={`nav-link transition ${
-                  isActive ? "text-emerald-400 active" : "text-neutral-400 hover:text-neutral-100"
+                  isActive ? "text-gold-400 active" : "text-warm-400 hover:text-warm-100"
                 }`}
               >
                 {label}
@@ -61,17 +61,17 @@ export default function Header() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-5 h-0.5 bg-neutral-300 transition-transform ${
+            className={`block w-5 h-0.5 bg-warm-300 transition-transform ${
               menuOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`block w-5 h-0.5 bg-neutral-300 transition-opacity ${
+            className={`block w-5 h-0.5 bg-warm-300 transition-opacity ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-5 h-0.5 bg-neutral-300 transition-transform ${
+            className={`block w-5 h-0.5 bg-warm-300 transition-transform ${
               menuOpen ? "-rotate-45 -translate-y-2" : ""
             }`}
           />
@@ -80,13 +80,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-neutral-800 bg-neutral-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-4">
+        <nav className="md:hidden border-t border-surface-800 bg-surface-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-4">
           {links.map(({ href, label }) => (
             <a
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="text-neutral-400 hover:text-neutral-100 transition text-sm"
+              className="text-warm-400 hover:text-warm-100 transition text-sm"
             >
               {label}
             </a>

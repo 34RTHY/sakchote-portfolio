@@ -43,7 +43,8 @@ export default function SectionWrapper({
     >
       <section
         id={id}
-        className={`${animate ? "fade-in-up-animate" : ""} ${className}`}
+        className={className}
+        {...(animate ? { "data-animate": "" } : {})}
       >
         {children}
       </section>

@@ -36,18 +36,18 @@ export default async function ProjectPage({ params }: Props) {
     <article className="max-w-5xl mx-auto px-6 pt-28 pb-20">
       <Link
         href="/#projects"
-        className="text-sm text-neutral-500 hover:text-emerald-400 transition mb-8 inline-block"
+        className="text-sm text-warm-500 hover:text-gold-400 transition mb-8 inline-block"
       >
         &larr; Back to projects
       </Link>
 
-      <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">
         {project.title}
       </h1>
-      <p className="text-lg text-neutral-400 mb-8">{project.tagline}</p>
+      <p className="text-lg text-warm-400 mb-8">{project.tagline}</p>
 
       {/* Hero image */}
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl h-64 md:h-80 relative overflow-hidden flex items-center justify-center text-neutral-700 mb-12">
+      <div className="bg-surface-900 border border-surface-800 rounded-xl h-64 md:h-80 relative overflow-hidden flex items-center justify-center text-surface-700 mb-12">
         {project.image ? (
           <Image
             src={project.image}
@@ -67,7 +67,7 @@ export default async function ProjectPage({ params }: Props) {
       <div className="grid md:grid-cols-3 gap-12 mb-16">
         <div className="md:col-span-2 space-y-4">
           {project.description.map((para, i) => (
-            <p key={i} className="text-neutral-300 leading-relaxed">
+            <p key={i} className="text-warm-300 leading-relaxed">
               {para}
             </p>
           ))}
@@ -75,20 +75,20 @@ export default async function ProjectPage({ params }: Props) {
 
         <aside className="space-y-6 text-sm">
           <div>
-            <h3 className="text-neutral-500 font-medium mb-1">Role</h3>
-            <p className="text-neutral-300">{project.role}</p>
+            <h3 className="text-warm-500 font-medium mb-1">Role</h3>
+            <p className="text-warm-300">{project.role}</p>
           </div>
           <div>
-            <h3 className="text-neutral-500 font-medium mb-1">Timeline</h3>
-            <p className="text-neutral-300">{project.timeline}</p>
+            <h3 className="text-warm-500 font-medium mb-1">Timeline</h3>
+            <p className="text-warm-300">{project.timeline}</p>
           </div>
           <div>
-            <h3 className="text-neutral-500 font-medium mb-1">Stack</h3>
+            <h3 className="text-warm-500 font-medium mb-1">Stack</h3>
             <div className="flex flex-wrap gap-2">
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-xs text-neutral-400 border border-neutral-800 rounded px-2 py-1"
+                  className="font-mono text-xs text-warm-400 border border-surface-800 rounded px-2 py-1"
                 >
                   {tech}
                 </span>
@@ -97,7 +97,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
           {project.links.length > 0 && (
             <div>
-              <h3 className="text-neutral-500 font-medium mb-1">Links</h3>
+              <h3 className="text-warm-500 font-medium mb-1">Links</h3>
               <div className="space-y-1">
                 {project.links.map((link) => (
                   <a
@@ -105,7 +105,7 @@ export default async function ProjectPage({ params }: Props) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-emerald-400 hover:text-emerald-300 transition"
+                    className="block text-gold-400 hover:text-gold-400/80 transition"
                   >
                     {link.label} &rarr;
                   </a>
@@ -119,12 +119,12 @@ export default async function ProjectPage({ params }: Props) {
       {/* Screenshot gallery */}
       {project.screenshots && project.screenshots.length > 0 && (
         <div className="mb-16">
-          <h2 className="font-heading text-2xl font-bold mb-6">Screenshots</h2>
+          <h2 className="text-2xl font-semibold mb-6">Screenshots</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {project.screenshots.map((src, i) => (
               <div
                 key={i}
-                className="bg-neutral-900 border border-neutral-800 rounded-lg h-48 relative overflow-hidden"
+                className="bg-surface-900 border border-surface-800 rounded-lg h-48 relative overflow-hidden"
               >
                 <Image
                   src={src}
@@ -140,13 +140,13 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Technical highlights */}
       <div className="mb-16">
-        <h2 className="font-heading text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-semibold mb-6">
           Technical Highlights
         </h2>
         <ul className="space-y-3">
           {project.highlights.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-neutral-300">
-              <span className="text-emerald-400 mt-0.5 shrink-0">-</span>
+            <li key={i} className="flex items-start gap-3 text-warm-300">
+              <span className="text-gold-400 mt-0.5 shrink-0">-</span>
               {item}
             </li>
           ))}

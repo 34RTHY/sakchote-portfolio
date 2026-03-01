@@ -8,11 +8,11 @@ interface ProjectNavProps {
 
 export default function ProjectNav({ prev, next }: ProjectNavProps) {
   return (
-    <div className="flex justify-between items-center border-t border-neutral-800 pt-8 mt-16">
+    <div className="flex justify-between items-center border-t border-surface-800 pt-8 mt-16">
       {prev ? (
         <Link
           href={`/projects/${prev.slug}`}
-          className="text-sm text-neutral-400 hover:text-emerald-400 transition"
+          className="text-sm text-warm-400 hover:text-gold-400 transition"
         >
           &larr; {prev.title}
         </Link>
@@ -22,7 +22,7 @@ export default function ProjectNav({ prev, next }: ProjectNavProps) {
       {next ? (
         <Link
           href={`/projects/${next.slug}`}
-          className="text-sm text-neutral-400 hover:text-emerald-400 transition"
+          className="text-sm text-warm-400 hover:text-gold-400 transition"
         >
           {next.title} &rarr;
         </Link>

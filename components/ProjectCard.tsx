@@ -1,5 +1,7 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import CardGlow from "@/components/CardGlow";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -9,15 +11,15 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, featured }: ProjectCardProps) {
   return (
-    <Link
+    <CardGlow
       href={`/projects/${project.slug}`}
-      className={`group block border border-neutral-800 rounded-xl hover:border-neutral-600 hover:-translate-y-1 transition-all duration-200 overflow-hidden ${
+      className={`group block border border-surface-800 rounded-xl hover:border-surface-700 hover:scale-[1.02] hover:shadow-lg hover:shadow-gold-500/5 transition-all duration-200 overflow-hidden ${
         featured ? "md:col-span-2" : ""
       }`}
     >
       {/* Image or placeholder */}
       <div
-        className={`bg-neutral-900 relative flex items-center justify-center text-neutral-700 ${
+        className={`bg-surface-900 relative flex items-center justify-center text-surface-700 ${
           featured ? "h-48 md:h-56" : "h-40"
         }`}
       >
@@ -35,24 +37,24 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
         )}
       </div>
 
-      <div className="p-6">
-        <h3 className="font-heading text-xl font-semibold mb-2 group-hover:text-emerald-400 transition-colors">
+      <div className="p-6 bg-surface-900/80 backdrop-blur-sm border-t border-surface-800 group-hover:border-gold-500/20 transition-colors">
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-gold-400 transition-colors">
           {project.title}
         </h3>
-        <p className="text-neutral-400 text-sm mb-4 line-clamp-2">
+        <p className="text-warm-400 text-sm mb-4 line-clamp-2">
           {project.tagline}
         </p>
         <div className="flex flex-wrap gap-2">
           {project.stack.slice(0, 5).map((tag) => (
             <span
               key={tag}
-              className="font-mono text-xs text-neutral-500"
+              className="font-mono text-xs text-warm-500"
             >
               {tag}
             </span>
           ))}
         </div>
       </div>
-    </Link>
+    </CardGlow>
   );
 }

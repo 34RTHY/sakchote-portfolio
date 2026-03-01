@@ -29,12 +29,12 @@ export default function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="p-2 text-neutral-500 hover:text-neutral-200 transition rounded-lg hover:bg-neutral-800"
+      className="p-2 text-warm-500 hover:text-warm-100 transition rounded-lg hover:bg-surface-800"
       aria-label="Copy email address"
       title="Copy email"
     >
       {copied ? (
-        <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-4 h-4 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
         </svg>
       ) : (

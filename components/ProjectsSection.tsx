@@ -1,5 +1,6 @@
 import SectionWrapper from "@/components/SectionWrapper";
 import ProjectCard from "@/components/ProjectCard";
+import SplitHeading from "@/components/SplitHeading";
 import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
@@ -8,7 +9,8 @@ export default function ProjectsSection() {
 
   return (
     <SectionWrapper id="projects" className="max-w-5xl mx-auto px-6 py-20">
-      <h2 className="font-heading text-3xl font-bold mb-12">Projects</h2>
+      <p className="text-xs uppercase tracking-[0.2em] text-warm-500 mb-4">02 —</p>
+      <SplitHeading className="text-3xl md:text-4xl font-semibold mb-12">Projects</SplitHeading>
       <div className="grid md:grid-cols-2 gap-6">
         {featured && <ProjectCard project={featured} featured />}
         {rest.map((project) => (
