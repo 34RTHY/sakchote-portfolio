@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SectionWrapper from "@/components/SectionWrapper";
 import SplitHeading from "@/components/SplitHeading";
 import { experience } from "@/data/experience";
@@ -14,7 +15,11 @@ export default function ExperienceSection() {
 
         <div className="space-y-10">
           {experience.map((job, i) => (
-            <div key={job.role + job.company} className="relative pl-8">
+            <Link
+              key={job.slug}
+              href={`/experience/${job.slug}`}
+              className="relative pl-8 block group"
+            >
               {/* Timeline dot */}
               <div className={`absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 transition-colors ${
                 i === 0
@@ -25,14 +30,17 @@ export default function ExperienceSection() {
               <p className="font-mono text-sm text-warm-500 mb-1">
                 {job.period}
               </p>
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-xl font-semibold group-hover:text-gold-400 transition">
                 {job.role}{" "}
-                <span className="text-warm-400 font-normal">
+                <span className="text-warm-400 font-normal group-hover:text-gold-400/70">
                   at {job.company}
                 </span>
+                <span className="text-warm-600 ml-2 opacity-0 group-hover:opacity-100 transition">
+                  &rarr;
+                </span>
               </h3>
-              <p className="text-warm-400 mt-2">{job.description}</p>
-            </div>
+              <p className="text-warm-400 mt-2">{job.content.find((b) => b.type === "text")?.value}</p>
+            </Link>
           ))}
         </div>
       </div>
@@ -44,7 +52,11 @@ export default function ExperienceSection() {
 
         <div className="space-y-10">
           {education.map((entry, i) => (
-            <div key={entry.school + entry.degree} className="relative pl-8">
+            <Link
+              key={entry.slug}
+              href={`/education/${entry.slug}`}
+              className="relative pl-8 block group"
+            >
               <div className={`absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 transition-colors ${
                 i === 0
                   ? "border-gold-400 bg-gold-400/20"
@@ -54,14 +66,17 @@ export default function ExperienceSection() {
               <p className="font-mono text-sm text-warm-500 mb-1">
                 {entry.period}
               </p>
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-xl font-semibold group-hover:text-gold-400 transition">
                 {entry.degree}{" "}
-                <span className="text-warm-400 font-normal">
+                <span className="text-warm-400 font-normal group-hover:text-gold-400/70">
                   at {entry.school}
                 </span>
+                <span className="text-warm-600 ml-2 opacity-0 group-hover:opacity-100 transition">
+                  &rarr;
+                </span>
               </h3>
-              <p className="text-warm-400 mt-2">{entry.description}</p>
-            </div>
+              <p className="text-warm-400 mt-2">{entry.content.find((b) => b.type === "text")?.value}</p>
+            </Link>
           ))}
         </div>
       </div>

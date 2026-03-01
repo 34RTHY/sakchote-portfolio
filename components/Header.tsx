@@ -5,7 +5,8 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { siteConfig, navSections } from "@/data/config";
 
 const links = [
-  ...navSections.map((s) => ({ href: `#${s.id}`, label: s.label })),
+  ...navSections.map((s) => ({ href: `/#${s.id}`, label: s.label })),
+  { href: "/uses", label: "Uses" },
   { href: siteConfig.resumePath, label: "Resume" },
 ];
 
@@ -30,7 +31,7 @@ export default function Header() {
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
-          href="#"
+          href="/"
           className="text-xl font-semibold tracking-tight text-warm-100"
         >
           {siteConfig.name}
@@ -39,7 +40,7 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 text-sm">
           {links.map(({ href, label }) => {
-            const isActive = href.startsWith("#") && active === href.slice(1);
+            const isActive = href.startsWith("/#") && active === href.slice(2);
             return (
               <a
                 key={href}

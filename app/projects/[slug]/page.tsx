@@ -3,7 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/config";
-import ProjectNav from "@/components/ProjectNav";
+import DetailNav from "@/components/DetailNav";
+import ContentRenderer from "@/components/ContentRenderer";
+import ImageLightbox from "@/components/ImageLightbox";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -44,16 +47,21 @@ export default async function ProjectPage({ params }: Props) {
       <h1 className="text-4xl md:text-5xl font-bold mb-4">
         {project.title}
       </h1>
+      {project.status && (
+        <span className="inline-block text-sm font-semibold text-gold-400 border border-gold-400/40 rounded-full px-3 py-1 mb-4">
+          {project.status}
+        </span>
+      )}
       <p className="text-lg text-warm-400 mb-8">{project.tagline}</p>
 
       {/* Hero image */}
-      <div className="bg-surface-900 border border-surface-800 rounded-xl h-64 md:h-80 relative overflow-hidden flex items-center justify-center text-surface-700 mb-12">
+      <div className="bg-surface-900 border border-surface-800 rounded-xl h-64 md:h-96 relative overflow-hidden flex items-center justify-center text-surface-700 mb-12">
         {project.image ? (
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover"
+            className="object-contain p-4"
             priority
           />
         ) : (
@@ -65,12 +73,18 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Two-column: overview + sidebar */}
       <div className="grid md:grid-cols-3 gap-12 mb-16">
-        <div className="md:col-span-2 space-y-4">
-          {project.description.map((para, i) => (
-            <p key={i} className="text-warm-300 leading-relaxed">
-              {para}
-            </p>
-          ))}
+        <div className="md:col-span-2">
+          {project.content ? (
+            <ContentRenderer content={project.content} />
+          ) : (
+            <div className="space-y-4">
+              {project.description.map((para, i) => (
+                <p key={i} className="text-warm-300 leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
 
         <aside className="space-y-6 text-sm">
@@ -122,17 +136,16 @@ export default async function ProjectPage({ params }: Props) {
           <h2 className="text-2xl font-semibold mb-6">Screenshots</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {project.screenshots.map((src, i) => (
-              <div
-                key={i}
-                className="bg-surface-900 border border-surface-800 rounded-lg h-48 relative overflow-hidden"
-              >
-                <Image
-                  src={src}
-                  alt={`${project.title} screenshot ${i + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <ImageLightbox key={i} src={src} alt={`${project.title} screenshot ${i + 1}`}>
+                <div className="bg-surface-900 border border-surface-800 rounded-xl h-48 md:h-64 relative overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                    fill
+                    className="object-contain p-3"
+                  />
+                </div>
+              </ImageLightbox>
             ))}
           </div>
         </div>
@@ -153,7 +166,16 @@ export default async function ProjectPage({ params }: Props) {
         </ul>
       </div>
 
-      <ProjectNav prev={prev} next={next} />
+      <RelatedLinks
+        relatedExperience={project.relatedExperience}
+        relatedAwards={project.relatedAwards}
+      />
+
+      <DetailNav
+        prev={prev ? { slug: prev.slug, title: prev.title } : null}
+        next={next ? { slug: next.slug, title: next.title } : null}
+        basePath="/projects"
+      />
     </article>
   );
 }

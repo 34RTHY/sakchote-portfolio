@@ -113,7 +113,7 @@ export default function HeroSection() {
           style={{ animationDelay: "1.6s" }}
         >
           <MagneticButton
-            href="#projects"
+            href="/#projects"
             className="px-6 py-3 bg-gold-500 hover:bg-gold-400 text-surface-950 rounded-lg font-medium transition-colors text-sm inline-block"
           >
             View Projects

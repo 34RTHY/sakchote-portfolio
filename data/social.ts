@@ -6,8 +6,8 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   {
-    label: "Sakchote.khemmarach@email.com",
-    href: "mailto:Sakchote.khemmarach@email.com",
+    label: "Sakchote.khemmarach@gmail.com",
+    href: "mailto:Sakchote.khemmarach@gmail.com",
     icon: "email",
   },
   {
@@ -17,7 +17,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/sakchote-khemmarach",
+    href: "https://www.linkedin.com/in/sakchote-khemmarach/",
     icon: "linkedin",
   },
   {
