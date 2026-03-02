@@ -42,45 +42,45 @@ export const projects: Project[] = [
       // --- Dashboard ---
       { type: "heading", value: "Dashboard & Project Management" },
       { type: "text", value: "The dashboard aggregates real-time metrics across the system — total exam count, processing status breakdown (pending, processing, processed, failed), completion rate, average score, and a score distribution histogram. All statistics are computed from materialized database views that refresh on a configurable interval, keeping dashboard queries fast even as the exam count scales into the thousands." },
-      { type: "image", src: "/projects/ezzay-platform/cover.png", caption: "Dashboard — real-time statistics, score distribution, and processing status" },
+      { type: "image", src: "/projects/ezzay-platform/cover.jpg", caption: "Dashboard — real-time statistics, score distribution, and processing status" },
 
       { type: "text", value: "The platform organizes work into Projects — each one maps to a specific course section and grading rubric. Instructors create a project, bind it to a Task (the rubric configuration), and bulk-upload exam PDFs. The system splits multi-page PDFs, queues each page for processing, and tracks status at both the project and individual exam level." },
-      { type: "image", src: "/projects/ezzay-platform/projects.png", caption: "Projects — each project groups exams by course, section, and grading rubric" },
-      { type: "image", src: "/projects/ezzay-platform/inside_project.png", caption: "Project detail — exam list with processing status and score overview" },
+      { type: "image", src: "/projects/ezzay-platform/projects.jpg", caption: "Projects — each project groups exams by course, section, and grading rubric" },
+      { type: "image", src: "/projects/ezzay-platform/inside_project.jpg", caption: "Project detail — exam list with processing status and score overview" },
 
       // --- Exam Grading Detail ---
       { type: "heading", value: "Exam Grading in Detail" },
       { type: "text", value: "Each graded exam surfaces five tabs of data. The Details tab shows the scanned image alongside metadata — exam ID, page number, processing status, total score, and timestamps. Instructors can trigger re-evaluation (useful after rubric adjustments), export individual results as PDF or CSV, or manually override scores when the AI's judgment needs correction." },
-      { type: "image", src: "/projects/ezzay-platform/project_exam_details.png", caption: "Exam detail — scanned image with metadata, status, and total score" },
+      { type: "image", src: "/projects/ezzay-platform/project_exam_details.jpg", caption: "Exam detail — scanned image with metadata, status, and total score" },
 
       { type: "text", value: "The Scores tab provides a rubric-level breakdown with visual progress indicators for each dimension. This design lets instructors spot patterns at a glance — if a cohort consistently scores low on Organization but high on Task Completion, it signals a teaching gap rather than a grading error." },
-      { type: "image", src: "/projects/ezzay-platform/score_dist.png", caption: "Score breakdown — four rubric dimensions with visual progress indicators" },
+      { type: "image", src: "/projects/ezzay-platform/score_dist.jpg", caption: "Score breakdown — four rubric dimensions with visual progress indicators" },
 
       // --- OCR & Text Processing ---
       { type: "heading", value: "OCR & Text Processing" },
       { type: "text", value: "The Student tab shows metadata extracted directly from the exam sheet — student ID, section, seat number, and exam room — all read from the student's handwriting. This eliminates manual data entry and links each graded result back to the student record automatically." },
-      { type: "image", src: "/projects/ezzay-platform/student_info.png", caption: "Student information — OCR-extracted metadata from handwritten exam sheets" },
+      { type: "image", src: "/projects/ezzay-platform/student_info.jpg", caption: "Student information — OCR-extracted metadata from handwritten exam sheets" },
 
       { type: "text", value: "The Text tab exposes the raw OCR output alongside an AI-cleaned version. This transparency serves two purposes: instructors can verify OCR accuracy on difficult handwriting, and the improved text shows exactly what the grading model evaluated — closing the loop on any scoring questions." },
-      { type: "image", src: "/projects/ezzay-platform/text.png", caption: "Text — raw OCR extraction alongside the AI-improved version" },
+      { type: "image", src: "/projects/ezzay-platform/text.jpg", caption: "Text — raw OCR extraction alongside the AI-improved version" },
 
       // --- AI Feedback & Few-Shot Learning ---
       { type: "heading", value: "AI Feedback & Few-Shot Learning" },
       { type: "text", value: "The Feedback tab makes the AI's reasoning fully transparent. Each exam gets an overall comment summarizing strengths and areas for improvement, followed by a criterion-by-criterion justification — explaining exactly how the model arrived at each sub-score with direct references to the student's writing. This isn't a black-box score; instructors can audit the reasoning and override when they disagree." },
-      { type: "image", src: "/projects/ezzay-platform/feedback.png", caption: "Feedback — AI-generated comment and per-criterion scoring justification" },
+      { type: "image", src: "/projects/ezzay-platform/feedback.jpg", caption: "Feedback — AI-generated comment and per-criterion scoring justification" },
 
       { type: "text", value: "To improve grading consistency over time, every graded exam is embedded into a 1536-dimensional vector using OpenAI's text-embedding model and stored in PostgreSQL via pgvector with an HNSW index. When grading a new exam, the system retrieves the three most semantically similar previously-graded exams and includes them as few-shot examples in the prompt. This grounds the model's scoring in established precedent rather than relying solely on rubric instructions — effectively building institutional memory into the grading pipeline." },
 
       // --- Rubric Configuration ---
       { type: "heading", value: "Rubric Configuration" },
       { type: "text", value: "Tasks are the core configuration that shape grading behavior. Each task encapsulates course metadata, detailed rubric criteria with scoring bands, example evaluations for model calibration, and the original exam instructions. Different tasks produce different scoring behaviors — a writing proficiency exam grades differently from a reading comprehension test, and the Task abstraction makes this configurable without code changes." },
-      { type: "image", src: "/projects/ezzay-platform/task.png", caption: "Tasks — rubric configuration that drives AI evaluation behavior" },
+      { type: "image", src: "/projects/ezzay-platform/task.jpg", caption: "Tasks — rubric configuration that drives AI evaluation behavior" },
 
       // --- Infrastructure & Auth ---
       { type: "heading", value: "Access Control & Administration" },
       { type: "text", value: "Authentication uses JWT with role-based access control. Administrators manage user accounts and system-level settings, while teachers are scoped to their own projects and exams. Token refresh is handled via HTTP-only cookies with sliding expiration to balance security with session persistence." },
-      { type: "image", src: "/projects/ezzay-platform/users.png", caption: "User management — admin-only account registration and role assignment" },
-      { type: "image", src: "/projects/ezzay-platform/settings.png", caption: "Settings — profile, notifications, and email preferences" },
+      { type: "image", src: "/projects/ezzay-platform/users.jpg", caption: "User management — admin-only account registration and role assignment" },
+      { type: "image", src: "/projects/ezzay-platform/settings.jpg", caption: "Settings — profile, notifications, and email preferences" },
 
       // --- Backend & Deployment ---
       { type: "heading", value: "Backend & Deployment" },
@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "CI/CD pipeline with GitHub Actions and automated test suites (pytest + Vitest)",
       "Research presented at IEEE TALE 2025 in Macau — validated few-shot grading methodology",
     ],
-    image: "/projects/ezzay-platform/cover.png",
+    image: "/projects/ezzay-platform/cover.jpg",
     featured: true,
     relatedExperience: ["ezzay-platform"],
     relatedAwards: ["ieee-tale-macau-2025", "ai-thailand-hackathon-2024"],
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       "GitOps application delivery with ArgoCD for automated, declarative deployments",
       "UFW default-deny firewalls with SSH locked to Tailscale IPs after bootstrap",
     ],
-    image: "/projects/homelab-kubernetes/cover.png",
+    image: "/projects/homelab-kubernetes/cover.jpg",
     featured: true,
   },
   {
@@ -241,7 +241,7 @@ export const projects: Project[] = [
       "Multi-stage Docker builds with stripped binaries on Alpine",
       "Git Flow branching strategy with semantic versioning",
     ],
-    image: "/projects/choudai/cover.png",
+    image: "/projects/choudai/cover.jpg",
   },
   {
     slug: "resume-generator",
@@ -257,34 +257,34 @@ export const projects: Project[] = [
 
       { type: "heading", value: "How It Works" },
       { type: "text", value: "Users start with a base resume containing their complete work history, skills, and projects. When targeting a specific position, they provide company and job details — or let the system scrape and research the company automatically via Tavily web search. The platform then analyzes the gap between the candidate's profile and the target role, and generates a tailored resume variation using GPT-4o with structured outputs via the Instructor framework." },
-      { type: "image", src: "/projects/resume-generator/dashboard.png", caption: "Dashboard — overview of resumes, recent activity, and quick actions" },
+      { type: "image", src: "/projects/resume-generator/dashboard.jpg", caption: "Dashboard — overview of resumes, recent activity, and quick actions" },
       { type: "text", value: "The AI rewriting engine operates with strict constraints: it preserves all factual data — titles, dates, company names — while enhancing descriptions with power verbs, quantified impact metrics, and STAR-method framing. It injects relevant keywords from the job description and adapts tone based on detected company archetype: Enterprise/FinTech gets a 'Balanced Tech Lead' voice emphasizing reliability and governance, AI/Big Tech gets a 'Bold Innovator' tone highlighting research and vision, Startups get direct impact-driven language, and Creative companies get user-centric storytelling." },
-      { type: "image", src: "/projects/resume-generator/global-profile.png", caption: "Global profile — base resume data shared across all variations" },
-      { type: "image", src: "/projects/resume-generator/profile-detail.png", caption: "Profile detail — editing work experience, skills, and projects" },
-      { type: "image", src: "/projects/resume-generator/create-profile.png", caption: "Creating a new resume profile" },
+      { type: "image", src: "/projects/resume-generator/global-profile.jpg", caption: "Global profile — base resume data shared across all variations" },
+      { type: "image", src: "/projects/resume-generator/profile-detail.jpg", caption: "Profile detail — editing work experience, skills, and projects" },
+      { type: "image", src: "/projects/resume-generator/create-profile.jpg", caption: "Creating a new resume profile" },
 
       { type: "heading", value: "Resume Generation & Variations" },
       { type: "text", value: "Each base resume can spawn multiple targeted variations — one per company or role. The platform tracks all generated versions with snapshots, letting users compare how the same experience is framed differently for different audiences." },
-      { type: "image", src: "/projects/resume-generator/generated-variations.png", caption: "Generated variations — multiple tailored versions from a single base resume" },
-      { type: "image", src: "/projects/resume-generator/resume-detail.png", caption: "Viewing a specific resume variation with section-by-section content" },
-      { type: "image", src: "/projects/resume-generator/pdf-preview.png", caption: "Live PDF preview — LaTeX-compiled resume ready for download" },
-      { type: "image", src: "/projects/resume-generator/archived-resumes.png", caption: "Archived resumes — version history and past variations" },
+      { type: "image", src: "/projects/resume-generator/generated-variations.jpg", caption: "Generated variations — multiple tailored versions from a single base resume" },
+      { type: "image", src: "/projects/resume-generator/resume-detail.jpg", caption: "Viewing a specific resume variation with section-by-section content" },
+      { type: "image", src: "/projects/resume-generator/pdf-preview.jpg", caption: "Live PDF preview — LaTeX-compiled resume ready for download" },
+      { type: "image", src: "/projects/resume-generator/archived-resumes.jpg", caption: "Archived resumes — version history and past variations" },
 
       { type: "heading", value: "Six-Agent Evaluation System" },
       { type: "text", value: "Every generated resume is evaluated by six specialized AI agents, each examining the document from a different professional perspective. An ATS Scanner checks keyword density and format compatibility. A Hiring Manager evaluates role fit and career trajectory. A Senior Engineer peer-reviews technical credibility. A Recruiter assesses first-impression quality. An HR Specialist checks for consistency and red flags. And a Visual Recruiter uses GPT-4o's vision capabilities to perform a 6-second visual scan of the rendered PDF — evaluating layout hierarchy, typography, and visual balance the way a real recruiter would." },
-      { type: "image", src: "/projects/resume-generator/ai-evaluation.png", caption: "AI evaluation — six agents scoring the resume from different perspectives" },
+      { type: "image", src: "/projects/resume-generator/ai-evaluation.jpg", caption: "AI evaluation — six agents scoring the resume from different perspectives" },
       { type: "text", value: "Each agent produces a scored assessment with specific positives, negatives, and actionable suggestions. The resume is only marked 'ready' when all six agents score above 85. Users can then apply AI-powered fixes — either conservative edits that preserve the original structure or aggressive rewrites — and re-evaluate iteratively until every perspective is satisfied." },
-      { type: "image", src: "/projects/resume-generator/evaluation-results.png", caption: "Evaluation results — per-agent scores with detailed feedback" },
-      { type: "image", src: "/projects/resume-generator/improvement-suggestions.png", caption: "AI-powered improvement suggestions with actionable fixes" },
+      { type: "image", src: "/projects/resume-generator/evaluation-results.jpg", caption: "Evaluation results — per-agent scores with detailed feedback" },
+      { type: "image", src: "/projects/resume-generator/improvement-suggestions.jpg", caption: "AI-powered improvement suggestions with actionable fixes" },
 
       { type: "heading", value: "LaTeX PDF Generation" },
       { type: "text", value: "Resumes compile to publication-quality PDFs through a dedicated LaTeX service. The template engine supports eight typeface families, custom section ordering and naming, clickable hyperlinks, and automatic date formatting. Users can also drop into a CodeMirror editor to customize the LaTeX source directly. The compilation service runs in a separate Docker container to isolate the TeX runtime from the main application." },
 
       { type: "heading", value: "Application Tracking & Analytics" },
       { type: "text", value: "Beyond resume generation, the platform tracks job applications through a pipeline — Draft, Applied, Interviewing, Accepted, Rejected — with metadata for salary ranges, interview rounds, and contact persons. An analytics dashboard visualizes application statistics, pipeline funnels, activity heatmaps, and cumulative API cost tracking across OpenAI and Tavily usage." },
-      { type: "image", src: "/projects/resume-generator/application-board.png", caption: "Application board — tracking job applications and their status" },
-      { type: "image", src: "/projects/resume-generator/kanban-pipeline.png", caption: "Kanban pipeline — drag-and-drop application stage management" },
-      { type: "image", src: "/projects/resume-generator/application-detail.png", caption: "Application detail — salary, interview rounds, contacts, and notes" },
+      { type: "image", src: "/projects/resume-generator/application-board.jpg", caption: "Application board — tracking job applications and their status" },
+      { type: "image", src: "/projects/resume-generator/kanban-pipeline.jpg", caption: "Kanban pipeline — drag-and-drop application stage management" },
+      { type: "image", src: "/projects/resume-generator/application-detail.jpg", caption: "Application detail — salary, interview rounds, contacts, and notes" },
 
       { type: "heading", value: "Structured AI Outputs" },
       { type: "text", value: "A core technical decision was rejecting the common pattern of asking an LLM for free-form text and parsing the result with regex. Instead, every AI interaction uses the Instructor framework — a library that wraps OpenAI's function calling API with Zod schema validation. Each expected output shape is defined as a Zod schema at compile time, and Instructor guarantees the LLM response conforms to that schema or retries. This means the resume generation endpoint returns a fully typed ResumeData object, not a string that might contain a JSON blob." },
@@ -319,7 +319,7 @@ export const projects: Project[] = [
     role: "Full-Stack Developer",
     timeline: "2024 — Present",
     links: [],
-    image: "/projects/resume-generator/dashboard.png",
+    image: "/projects/resume-generator/dashboard.jpg",
     highlights: [
       "Six specialized AI evaluation agents scoring resumes from ATS, hiring manager, engineer, recruiter, HR, and visual perspectives",
       "GPT-4o with Instructor + Zod for guaranteed structured outputs — no fragile parsing",
@@ -352,17 +352,17 @@ export const projects: Project[] = [
 
       { type: "heading", value: "Differential Diagnosis" },
       { type: "text", value: "The differential diagnosis engine is the most technically complex module. It accepts structured patient input — age, medical history, symptom details with timeline, and additional context like family history and lifestyle factors. The system compares this data against a comprehensive medical database, producing a prioritized list of candidate conditions ranked by likelihood. Each suggestion is cross-referenced for accuracy, enabling clinicians to systematically rule out conditions and converge on the correct diagnosis faster." },
-      { type: "image", src: "/projects/caremate/differential-diagnosis.png", caption: "Differential diagnosis — structured patient input with medical history, symptoms, and timeline" },
+      { type: "image", src: "/projects/caremate/differential-diagnosis.jpg", caption: "Differential diagnosis — structured patient input with medical history, symptoms, and timeline" },
 
       { type: "heading", value: "RAG Pipeline Architecture" },
       { type: "text", value: "CareMate runs two specialized RAG (Retrieval-Augmented Generation) pipelines, each optimized for its domain. The symptom evaluation pipeline ingests medical disease and diagnosis documents through semantic chunking, embeds them using OpenAI's text-embedding-3-small model, and stores the vectors in a MongoDB-backed vector database. At query time, the patient's input is transformed using HyDE (Hypothetical Document Embedding) — the system first generates a hypothetical ideal document that would answer the query, then embeds that document to retrieve more semantically relevant evidence than a raw query embedding would produce." },
       { type: "text", value: "The medical codes pipeline follows a similar architecture but uses sentence-level splitting instead of semantic chunking, optimized for the structured, codified nature of ICD-11, CPT, and HCPCS documentation. Both pipelines pass retrieved evidence through a DBRX Reranker with Long Context Reorder — re-scoring and reordering retrieved chunks by relevance before concatenating them with the original query for final generation by DBRX via Together.ai." },
-      { type: "image", src: "/projects/caremate/rag-architecture.png", caption: "RAG architecture — evidence-based symptom evaluation pipeline with HyDE, vector retrieval, and DBRX reranking" },
+      { type: "image", src: "/projects/caremate/rag-architecture.jpg", caption: "RAG architecture — evidence-based symptom evaluation pipeline with HyDE, vector retrieval, and DBRX reranking" },
 
       { type: "heading", value: "Pipeline Optimization with TruLens" },
       { type: "text", value: "Rather than guessing which RAG configuration works best, we systematically optimized the pipeline using TruLens — an evaluation framework that scores every response across three metrics: Answer Relevance (does the output address the query?), Context Relevance (are the retrieved documents actually useful?), and Groundedness (is the response factually supported by the retrieved context?). These metrics enabled data-driven hyperparameter tuning across the entire retrieval stack." },
       { type: "text", value: "The optimization sweep tested multiple configurations across three pipeline components. For query transformation: HyDE, Step Decompose, Retry Query, FLARE Instruct, and no transformation. For reranking: Colbert Rerank, RankGPT Rerank, Cohere Rerank, ms-marco-MiniLM, and mMiniLM. For prompt compression: LongLLMLingua versus no compression. Each combination was evaluated against the TruLens metrics to identify the optimal pipeline configuration for clinical accuracy." },
-      { type: "image", src: "/projects/caremate/trulens-optimization.png", caption: "TruLens hyperparameter tuning — sweep across query transforms, rerankers, and prompt compression" },
+      { type: "image", src: "/projects/caremate/trulens-optimization.jpg", caption: "TruLens hyperparameter tuning — sweep across query transforms, rerankers, and prompt compression" },
 
       { type: "heading", value: "Frontend & Deployment" },
       { type: "text", value: "The frontend is built with Streamlit, providing a lightweight web interface that clinicians can access from any device — whether in a hospital ward or a remote clinic. The application is designed for immediate usability with no installation required, prioritizing speed and accessibility over visual complexity." },
@@ -383,6 +383,6 @@ export const projects: Project[] = [
       "text-embedding-3-small for vector embeddings stored in MongoDB",
       "DBRX via Together.ai for low-latency clinical inference",
     ],
-    image: "/projects/caremate/cover.png",
+    image: "/projects/caremate/cover.jpg",
   },
 ];

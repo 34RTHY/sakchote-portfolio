@@ -76,7 +76,7 @@ export const awards: Award[] = [
       { type: "text", value: "Qualified as a Top 10 Finalist in the Thailand Cyber Top Talent 2025 Senior Qualifier, a national-scale cybersecurity competition organized by the National Cyber Security Agency (NCSA). The competition drew significantly more participants and featured harder challenges compared to the NCSA CTF Boot Camp, serving as Thailand's premier pathway for identifying top cybersecurity talent." },
       { type: "text", value: "My primary focus areas were web exploitation and cryptography — identifying and exploiting vulnerabilities in web applications, and breaking cryptographic implementations to recover flags. The qualifier tested depth of knowledge under time pressure across a broad range of real-world attack scenarios." },
     ],
-    image: "/awards/cyber-top-talent-2025/cover.png",
+    image: "/awards/cyber-top-talent-2025/cover.jpg",
   },
   {
     slug: "ncsa-ctf-bootcamp-2024",
@@ -162,6 +162,6 @@ export const awards: Award[] = [
       { type: "text", value: "Privacy was a core architectural constraint. All data flowing to the employer dashboard is aggregated and anonymized by design, with the system built to comply with GDPR, HIPAA, and Thailand's PDPA. Individual biometric data never leaves the employee's personal scope — employers only see population-level trends, never individual health records." },
       { type: "text", value: "The business model combines a one-time setup fee with recurring per-employee subscriptions, offering tiered plans that scale from basic health monitoring to advanced predictive analytics with custom integrations. The platform also extends the smartwatch beyond health — incorporating contactless payment, employee identification, and access control into a single wearable device." },
     ],
-    image: "/awards/yumepro-2025/cover.png",
+    image: "/awards/yumepro-2025/cover.jpg",
   },
 ];
