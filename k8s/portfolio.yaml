@@ -18,7 +18,7 @@ spec:
         location: home
       containers:
         - name: portfolio
-          image: ghcr.io/34rthy/sakchote-portfolio:ee5948ec5976209ac9efa263b014ee7f9a8afb80
+          image: ghcr.io/34rthy/sakchote-portfolio:abb2eb6c5298eb1c43991cc474b0ce789020022b
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
