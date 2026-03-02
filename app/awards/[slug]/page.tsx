@@ -62,7 +62,6 @@ export default async function AwardPage({ params }: Props) {
             src={award.image}
             alt={award.title}
             fill
-            sizes="(max-width: 768px) 100vw, 1800px"
             className="object-cover"
             priority
           />
