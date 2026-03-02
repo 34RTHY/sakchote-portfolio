@@ -29,6 +29,7 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
             src={project.image}
             alt={project.title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
             className="object-cover"
           />
         ) : (

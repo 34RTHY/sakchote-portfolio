@@ -44,6 +44,7 @@ export default function ContentRenderer({ content }: ContentRendererProps) {
                     alt={block.caption || ""}
                     width={1200}
                     height={800}
+                    sizes="(max-width: 768px) 100vw, 1400px"
                     className="w-full h-auto rounded-xl"
                   />
                 </div>
@@ -71,6 +72,7 @@ export default function ContentRenderer({ content }: ContentRendererProps) {
                           src={img.src}
                           alt={img.caption || ""}
                           fill
+                          sizes="(max-width: 768px) 50vw, 500px"
                           className="object-cover"
                         />
                       </div>

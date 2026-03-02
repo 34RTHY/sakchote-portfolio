@@ -67,6 +67,7 @@ export default async function ProjectPage({ params }: Props) {
             src={project.image}
             alt={project.title}
             fill
+            sizes="(max-width: 768px) 100vw, 1800px"
             className="object-contain p-4"
             priority
           />
@@ -148,6 +149,7 @@ export default async function ProjectPage({ params }: Props) {
                     src={src}
                     alt={`${project.title} screenshot ${i + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 900px"
                     className="object-contain p-3"
                   />
                 </div>

@@ -59,6 +59,7 @@ export default async function ExperiencePage({ params }: Props) {
             src={entry.image}
             alt={`${entry.role} at ${entry.company}`}
             fill
+            sizes="(max-width: 768px) 100vw, 1800px"
             className="object-cover"
             priority
           />
