@@ -41,10 +41,10 @@ export default async function AwardPage({ params }: Props) {
   return (
     <article className="max-w-5xl mx-auto px-6 pt-28 pb-20">
       <Link
-        href="/#about"
+        href="/#awards"
         className="text-sm text-warm-500 hover:text-gold-400 transition mb-8 inline-block"
       >
-        &larr; Back to about
+        &larr; Back to awards
       </Link>
 
       <h1 className="text-4xl md:text-5xl font-bold mb-4">{award.title}</h1>

@@ -39,27 +39,31 @@ function ScrollIndicator() {
 export default function HeroSection() {
   const [firstName, lastName] = siteConfig.fullName.split(" ");
   const sectionRef = useRef<HTMLElement>(null);
-  const [cursorGlow, setCursorGlow] = useState({ x: 0, y: 0, opacity: 0 });
-  const [parallaxY, setParallaxY] = useState(0);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const meshRef = useRef<HTMLDivElement>(null);
+  const dotGridRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const el = sectionRef.current;
-    if (!el) return;
+    const glow = glowRef.current;
+    if (!el || !glow) return;
     const rect = el.getBoundingClientRect();
-    setCursorGlow({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-      opacity: 1,
-    });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glow.style.opacity = "1";
+    glow.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(232, 200, 114, 0.07), transparent 50%)`;
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setCursorGlow((prev) => ({ ...prev, opacity: 0 }));
+    const glow = glowRef.current;
+    if (glow) glow.style.opacity = "0";
   }, []);
 
   useEffect(() => {
     const onScroll = () => {
-      setParallaxY(window.scrollY * 0.3);
+      const y = window.scrollY * 0.3;
+      if (meshRef.current) meshRef.current.style.transform = `translateY(${y}px)`;
+      if (dotGridRef.current) dotGridRef.current.style.transform = `translateY(${y * 0.5}px)`;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -73,20 +77,15 @@ export default function HeroSection() {
       onMouseLeave={handleMouseLeave}
     >
       {/* Background layers with parallax */}
-      <div
-        className="hero-gradient-mesh"
-        style={{ transform: `translateY(${parallaxY}px)` }}
-      />
-      <div className="hero-dot-grid" style={{ transform: `translateY(${parallaxY * 0.5}px)` }} />
+      <div ref={meshRef} className="hero-gradient-mesh" />
+      <div ref={dotGridRef} className="hero-dot-grid" />
       <div className="vignette" />
 
       {/* Cursor-tracking glow */}
       <div
+        ref={glowRef}
         className="pointer-events-none absolute inset-0 z-[1] transition-opacity duration-300"
-        style={{
-          opacity: cursorGlow.opacity,
-          background: `radial-gradient(600px circle at ${cursorGlow.x}px ${cursorGlow.y}px, rgba(232, 200, 114, 0.07), transparent 50%)`,
-        }}
+        style={{ opacity: 0 }}
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 flex-1 flex flex-col justify-end pb-24 md:pb-32">

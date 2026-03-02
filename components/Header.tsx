@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { siteConfig, navSections } from "@/data/config";
 
 const links = [
   ...navSections.map((s) => ({ href: `/#${s.id}`, label: s.label })),
-  { href: "/uses", label: "Uses" },
   { href: siteConfig.resumePath, label: "Resume" },
 ];
 
@@ -30,19 +30,19 @@ export default function Header() {
       }`}
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
+        <Link
           href="/"
           className="text-xl font-semibold tracking-tight text-warm-100"
         >
           {siteConfig.name}
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 text-sm">
           {links.map(({ href, label }) => {
             const isActive = href.startsWith("/#") && active === href.slice(2);
             return (
-              <a
+              <Link
                 key={href}
                 href={href}
                 className={`nav-link transition ${
@@ -50,7 +50,7 @@ export default function Header() {
                 }`}
               >
                 {label}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -83,14 +83,14 @@ export default function Header() {
       {menuOpen && (
         <nav className="md:hidden border-t border-surface-800 bg-surface-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-4">
           {links.map(({ href, label }) => (
-            <a
+            <Link
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
               className="text-warm-400 hover:text-warm-100 transition text-sm"
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
       )}

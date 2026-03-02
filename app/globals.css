@@ -195,6 +195,23 @@ html {
   animation: scrollBounce 2s ease-in-out infinite;
 }
 
+/* ── View Transitions ── */
+::view-transition-old(root) {
+  animation: 0.2s ease-out both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.3s ease-in 0.1s both fade-in;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
 /* ── Contact heading glow ── */
 .contact-glow {
   position: absolute;

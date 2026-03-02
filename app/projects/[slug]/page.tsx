@@ -44,7 +44,10 @@ export default async function ProjectPage({ params }: Props) {
         &larr; Back to projects
       </Link>
 
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <h1
+        className="text-4xl md:text-5xl font-bold mb-4"
+        style={{ viewTransitionName: `project-title-${slug}` }}
+      >
         {project.title}
       </h1>
       {project.status && (
@@ -55,7 +58,10 @@ export default async function ProjectPage({ params }: Props) {
       <p className="text-lg text-warm-400 mb-8">{project.tagline}</p>
 
       {/* Hero image */}
-      <div className="bg-surface-900 border border-surface-800 rounded-xl h-64 md:h-96 relative overflow-hidden flex items-center justify-center text-surface-700 mb-12">
+      <div
+        className="bg-surface-900 border border-surface-800 rounded-xl h-64 md:h-96 relative overflow-hidden flex items-center justify-center text-surface-700 mb-12"
+        style={{ viewTransitionName: `project-img-${slug}` }}
+      >
         {project.image ? (
           <Image
             src={project.image}

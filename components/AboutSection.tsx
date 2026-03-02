@@ -55,7 +55,7 @@ export default function AboutSection() {
 
       {/* Awards — hidden when empty */}
       {awards.length > 0 && (
-        <div className="mt-16">
+        <div id="awards" className="mt-16 scroll-mt-24">
           <SplitHeading as="h3" className="text-2xl font-semibold mb-6">Awards</SplitHeading>
           <div className="space-y-4">
             {awards.map((award) => (

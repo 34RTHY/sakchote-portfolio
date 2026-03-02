@@ -5,7 +5,7 @@ import { siteConfig } from "@/data/config";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-dm-sans" });
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
@@ -46,7 +46,7 @@ export default function RootLayout({
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
           </filter>
         </svg>
-        <div className="grain-overlay" style={{ filter: "url(#grain)" }} />
+        <div className="grain-overlay" style={{ filter: "url(#grain)", viewTransitionName: "none" }} />
       </body>
     </html>
   );

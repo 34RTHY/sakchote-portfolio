@@ -22,6 +22,7 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
         className={`bg-surface-900 relative flex items-center justify-center text-surface-700 ${
           featured ? "h-48 md:h-56" : "h-40"
         }`}
+        style={{ viewTransitionName: `project-img-${project.slug}` }}
       >
         {project.image ? (
           <Image
@@ -38,7 +39,10 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
       </div>
 
       <div className="p-6 bg-surface-900/80 backdrop-blur-sm border-t border-surface-800 group-hover:border-gold-500/20 transition-colors">
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-gold-400 transition-colors">
+        <h3
+          className="text-xl font-semibold mb-2 group-hover:text-gold-400 transition-colors"
+          style={{ viewTransitionName: `project-title-${project.slug}` }}
+        >
           {project.title}
         </h3>
         <p className="text-warm-400 text-sm mb-4 line-clamp-2">

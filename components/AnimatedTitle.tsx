@@ -16,7 +16,7 @@ export default function AnimatedTitle({
   }, []);
 
   return (
-    <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4">
+    <h1 className="font-sans text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4 font-semibold">
       <span
         className={`block ${mounted ? "mask-reveal" : ""}`}
         style={{ opacity: mounted ? undefined : 0 }}

@@ -15,21 +15,22 @@ export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [focused, setFocused] = useState<string | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
-  const [glowPos, setGlowPos] = useState({ x: 0, y: 0, opacity: 0 });
+  const glowRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const el = formRef.current;
-    if (!el) return;
+    const glow = glowRef.current;
+    if (!el || !glow) return;
     const rect = el.getBoundingClientRect();
-    setGlowPos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-      opacity: 1,
-    });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glow.style.opacity = "0.5";
+    glow.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(232, 200, 114, 0.1), transparent 60%)`;
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setGlowPos((prev) => ({ ...prev, opacity: 0 }));
+    const glow = glowRef.current;
+    if (glow) glow.style.opacity = "0";
   }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -64,8 +65,8 @@ export default function ContactSection() {
         <SplitHeading className="text-3xl md:text-4xl font-semibold mb-4 relative">Get in touch</SplitHeading>
       </div>
       <p className="text-warm-400 mb-12 max-w-lg">
-        Have a project in mind, an internship opportunity, or just want to talk
-        engineering? I&apos;d love to hear from you.
+        Have a project in mind, an internship opportunity, 
+        or just want to talk? I&apos;d love to hear from you.
       </p>
 
       <div className="grid md:grid-cols-5 gap-12 md:gap-16">
@@ -79,11 +80,9 @@ export default function ContactSection() {
           >
             {/* Cursor-tracking border glow */}
             <div
+              ref={glowRef}
               className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-500"
-              style={{
-                opacity: glowPos.opacity * 0.5,
-                background: `radial-gradient(400px circle at ${glowPos.x}px ${glowPos.y}px, rgba(232, 200, 114, 0.1), transparent 60%)`,
-              }}
+              style={{ opacity: 0 }}
             />
 
             {/* Corner accent */}

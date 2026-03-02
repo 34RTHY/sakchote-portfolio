@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useCallback, type ReactNode } from "react";
 import Link from "next/link";
 
 interface CardGlowProps {
@@ -11,23 +11,23 @@ interface CardGlowProps {
 
 export default function CardGlow({ children, className = "", href }: CardGlowProps) {
   const ref = useRef<HTMLAnchorElement>(null);
-  const [glowStyle, setGlowStyle] = useState<React.CSSProperties>({ opacity: 0 });
+  const glowRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const el = ref.current;
-    if (!el) return;
+    const glow = glowRef.current;
+    if (!el || !glow) return;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setGlowStyle({
-      opacity: 1,
-      background: `radial-gradient(400px circle at ${x}px ${y}px, rgba(232, 200, 114, 0.06), transparent 60%)`,
-    });
-  };
+    glow.style.opacity = "1";
+    glow.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(232, 200, 114, 0.06), transparent 60%)`;
+  }, []);
 
-  const handleMouseLeave = () => {
-    setGlowStyle({ opacity: 0 });
-  };
+  const handleMouseLeave = useCallback(() => {
+    const glow = glowRef.current;
+    if (glow) glow.style.opacity = "0";
+  }, []);
 
   return (
     <Link
@@ -38,8 +38,9 @@ export default function CardGlow({ children, className = "", href }: CardGlowPro
       onMouseLeave={handleMouseLeave}
     >
       <div
+        ref={glowRef}
         className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-300"
-        style={glowStyle}
+        style={{ opacity: 0 }}
       />
       {children}
     </Link>
