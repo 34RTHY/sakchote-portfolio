@@ -8,6 +8,11 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto flex items-center justify-between text-sm text-warm-500">
         <p>
           &copy; {new Date().getFullYear()} {siteConfig.fullName}
+          {process.env.NEXT_PUBLIC_BUILD_SHA && (
+            <span className="ml-2 text-warm-700">
+              build {process.env.NEXT_PUBLIC_BUILD_SHA.slice(0, 7)}
+            </span>
+          )}
         </p>
         <div className="flex gap-4">
           {socialLinks.map((link) => (

@@ -7,6 +7,8 @@ RUN npm ci
 # Stage 2: Build the application
 FROM node:20-alpine AS builder
 WORKDIR /app
+ARG BUILD_SHA=dev
+ENV NEXT_PUBLIC_BUILD_SHA=$BUILD_SHA
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
