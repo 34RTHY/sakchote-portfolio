@@ -17,7 +17,7 @@ export const experience: ExperienceEntry[] = [
   {
     slug: "ezzay-platform",
     role: "Backend Developer (Lead)",
-    company: "Ezzay Platform",
+    company: "Chulalongkorn University Language Institute (CULI)",
     period: "Aug 2024 — Present",
     content: [
       { type: "text", value: "Architected and deployed the backend infrastructure for an AI-powered exam grading platform at Chulalongkorn University Language Institute (CULI), reducing manual evaluation time by 50%." },

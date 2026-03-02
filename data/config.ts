@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Sakchote",
   fullName: "Sakchote Khemmarach",
-  title: "Software Engineer",
+  title: "Software Engineering Intern",
   tagline:
     "Software engineer building hybrid cloud infrastructure and full-stack applications.",
   location: "Based in Thailand",

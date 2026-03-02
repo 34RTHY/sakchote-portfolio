@@ -29,7 +29,7 @@ export default function AboutSection() {
             CTF competitions to sharpen these skills under pressure.
           </p>
           <p className="text-warm-400 leading-relaxed font-medium">
-            Currently seeking backend / infrastructure internship opportunities.
+            Currently open to software engineering internship opportunities.
           </p>
         </div>
         <div className="space-y-6">
