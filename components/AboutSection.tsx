@@ -121,7 +121,7 @@ export default function AboutSection() {
           href="/uses"
           className="text-sm text-warm-500 border border-surface-800 rounded-full px-5 py-2 hover:border-gold-500/40 hover:text-gold-400 transition-colors inline-block"
         >
-          Want to know me more? &rarr;
+          Want to know about me more? &rarr;
         </Link>
       </div>
     </SectionWrapper>

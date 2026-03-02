@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <article className="max-w-5xl mx-auto px-6 pt-28 pb-20">
       <Link
-        href="/#projects"
+        href="/projects"
         className="text-sm text-warm-500 hover:text-gold-400 transition mb-8 inline-block"
       >
         &larr; Back to projects

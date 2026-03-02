@@ -12,6 +12,7 @@ export interface Project {
   timeline: string;
   links: { label: string; href: string }[];
   highlights: string[];
+  categories: string[];
   featured?: boolean;
   image?: string;
   screenshots?: string[];
@@ -130,6 +131,7 @@ export const projects: Project[] = [
       "Research presented at IEEE TALE 2025 in Macau — validated few-shot grading methodology",
     ],
     image: "/projects/ezzay-platform/cover.jpg",
+    categories: ["AI / ML", "Full-Stack"],
     featured: true,
     relatedExperience: ["ezzay-platform"],
     relatedAwards: ["ieee-tale-macau-2025", "ai-thailand-hackathon-2024"],
@@ -189,6 +191,7 @@ export const projects: Project[] = [
       "UFW default-deny firewalls with SSH locked to Tailscale IPs after bootstrap",
     ],
     image: "/projects/homelab-kubernetes/cover.jpg",
+    categories: ["Infrastructure"],
     featured: true,
   },
   {
@@ -242,6 +245,7 @@ export const projects: Project[] = [
       "Git Flow branching strategy with semantic versioning",
     ],
     image: "/projects/choudai/cover.jpg",
+    categories: ["Full-Stack", "Backend"],
   },
   {
     slug: "resume-generator",
@@ -320,6 +324,7 @@ export const projects: Project[] = [
     timeline: "2024 — Present",
     links: [],
     image: "/projects/resume-generator/dashboard.jpg",
+    categories: ["AI / ML", "Full-Stack"],
     highlights: [
       "Six specialized AI evaluation agents scoring resumes from ATS, hiring manager, engineer, recruiter, HR, and visual perspectives",
       "GPT-4o with Instructor + Zod for guaranteed structured outputs — no fragile parsing",
@@ -384,5 +389,77 @@ export const projects: Project[] = [
       "DBRX via Together.ai for low-latency clinical inference",
     ],
     image: "/projects/caremate/cover.jpg",
+    categories: ["AI / ML"],
+  },
+  {
+    slug: "portfolio",
+    title: "Portfolio Website",
+    tagline:
+      "A performance-engineered portfolio built on Next.js 15, self-hosted on a hybrid Kubernetes cluster with Cloudflare edge caching — achieving sub-15ms image loads from 300+ global PoPs.",
+    description: [
+      "This portfolio site is itself a technical project — a from-scratch build optimized for performance, deployed through the same hybrid Kubernetes infrastructure that hosts my other applications.",
+    ],
+    content: [
+      { type: "heading", value: "Why Build From Scratch" },
+      { type: "text", value: "Most developer portfolios are either template-based or over-engineered. This one is purpose-built to demonstrate real engineering decisions: a custom content system that scales without a CMS, performance optimizations that produce measurable results, and a deployment pipeline that runs through production-grade infrastructure I built and maintain myself." },
+
+      { type: "heading", value: "Performance Engineering" },
+      { type: "text", value: "Performance wasn't an afterthought — it drove architectural decisions from the start. The site went through a systematic optimization pass that targeted every layer of the stack: image pipeline, rendering strategy, font loading, animation performance, and CDN caching." },
+      { type: "text", value: "The biggest win was the image pipeline. The site originally shipped raw multi-megabyte PNGs directly to browsers. After enabling Next.js image optimization with sharp, images are now converted to WebP on demand and served through responsive breakpoints. Source images were batch re-processed from 47 MB of raw PNGs down to 25 MB of high-quality JPGs — using q95 deliberately because two lossy passes (source → sharp → WebP) compound quality loss." },
+      { type: "text", value: "Custom device sizes (640, 1080, 1920 — down from 8 defaults) reduce the number of cache variants, meaning the CDN warms faster and more visitors get cache hits. Combined with a 30-day minimumCacheTTL, this produces sub-15ms image loads from Cloudflare's edge after the first request." },
+      { type: "gallery", title: "Cloudflare CDN Configuration", images: [
+        { src: "/projects/portfolio/cdn1.jpg", caption: "Cache Rule — custom filter expression matching /_next/image* requests" },
+        { src: "/projects/portfolio/cdn2.jpg", caption: "Cache eligibility & TTL — respecting origin Cache-Control headers for 30-day edge caching" },
+      ]},
+
+      { type: "heading", value: "Zero-Render Animation System" },
+      { type: "text", value: "All 60fps visual effects bypass React's reconciliation entirely using useRef and direct DOM writes. The cursor-tracking glow on project cards, the parallax scroll on the hero background layers, and the contact form border glow all write directly to element.style — no useState, no virtual DOM diffs, no re-renders on every mouse move or scroll event. Passive scroll listeners ensure the main thread is never blocked." },
+      { type: "text", value: "Section-level animations use IntersectionObserver with a single CSS attribute toggle — when a section scrolls into view, a data-animate attribute fires, and CSS nth-child selectors handle the staggered reveal. The observer disconnects after firing once, so there's zero ongoing JavaScript cost for already-visible sections." },
+
+      { type: "heading", value: "View Transitions" },
+      { type: "text", value: "The site uses the View Transitions API for page navigations. When clicking a project card, the card image morphs into the detail page hero and the title smoothly transitions into the page heading — both coordinated through matching viewTransitionName attributes. Non-shared elements cross-fade with a tuned asymmetric timing (0.2s out, 0.3s in with 0.1s delay). The film grain overlay is excluded from transitions via viewTransitionName: none to prevent z-index artifacts." },
+
+      { type: "heading", value: "Content Architecture" },
+      { type: "text", value: "All portfolio content lives as typed TypeScript arrays — no CMS, no database, no API layer. A ContentBlock discriminated union type powers a rich content system that renders headings, paragraphs, captioned images with lightbox, photo galleries, and attachment lists with typed icons. Every entity (projects, awards, experience, education) uses this same system, and cross-references between entities are resolved by slug at render time." },
+      { type: "text", value: "This approach means content is version-controlled, type-checked at compile time, and statically generated — the entire site builds to static HTML with zero runtime data fetching. Adding a new project is just adding an object to an array." },
+
+      { type: "heading", value: "Deployment Pipeline" },
+      { type: "text", value: "The site deploys through the same hybrid Kubernetes cluster documented in the Homelab project. A three-stage Docker build produces a minimal Alpine image (~50MB) running as a non-root user. ArgoCD watches the repository — pushing a change to the Kubernetes manifest automatically triggers a rolling update with health checks. The container image is published to GitHub Container Registry with the git commit SHA baked into the footer for traceability." },
+      { type: "text", value: "Traffic flows through Cloudflare's edge (DDoS protection, WAF, SSL termination), into a Cloudflare Tunnel (outbound-only, no open ports), through Traefik on the cloud node, over the Tailscale mesh, and into the pod running on the Proxmox home node. The portfolio is its own proof that the infrastructure works — it serves production traffic through every layer of the stack." },
+      { type: "heading", value: "Design Details" },
+      { type: "text", value: "The visual language is intentionally restrained — a near-black palette (#0C0B0A base) with warm gold accents, DM Sans for UI text, and Instrument Serif for decorative headings. A full-viewport SVG film grain overlay (feTurbulence fractalNoise, opacity 0.035, mix-blend-mode overlay) adds tactile texture without any image file. Interactive elements use a magnetic cursor effect on CTAs and a radial glow that follows the mouse across cards." },
+    ],
+    stack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "sharp",
+      "Docker",
+      "K3s",
+      "ArgoCD",
+      "Cloudflare",
+      "Traefik",
+    ],
+    role: "Design & Engineering",
+    timeline: "2025",
+    links: [
+      { label: "Live Site", href: "https://sakchote.com" },
+      { label: "GitHub", href: "https://github.com/34RTHY/sakchote-portfolio" },
+    ],
+    highlights: [
+      "Sub-15ms image loads via Cloudflare edge caching with custom cache rules for /_next/image*",
+      "47 MB → 25 MB source images, auto-converted to WebP with reduced breakpoints for faster CDN warming",
+      "Zero-render animation system — useRef + direct DOM writes for 60fps glow, parallax, and hover effects",
+      "View Transitions API for seamless page navigations with morphing images and titles",
+      "ContentBlock discriminated union — type-safe rich content without a CMS",
+      "Three-stage Docker build producing a ~50MB Alpine image running as non-root",
+      "GitOps deployment via ArgoCD with commit SHA traceability in the footer",
+      "Full traffic path: Cloudflare Edge → Tunnel → Traefik → Tailscale → K3s pod (zero open ports)",
+      "IntersectionObserver-driven section reveals with CSS-only staggered animations",
+      "SVG film grain overlay, magnetic buttons, and cursor-tracking radial glow effects",
+    ],
+    image: "/projects/portfolio/cover.jpg",
+    categories: ["Full-Stack", "Infrastructure"],
   },
 ];
