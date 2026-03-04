@@ -107,6 +107,7 @@ export const awards: Award[] = [
       { type: "gallery", images: [
         { src: "/awards/medchic-hackathon-2024/award-ceremony.jpg" },
         { src: "/awards/medchic-hackathon-2024/trophy.jpg" },
+        { src: "/awards/medchic-hackathon-2024/team-photo.webp", caption: "Team photo at Chiang Mai" },
       ]},
     ],
     image: "/awards/medchic-hackathon-2024/award-ceremony.jpg",
@@ -161,6 +162,10 @@ export const awards: Award[] = [
       { type: "text", value: "The platform operates on two layers. For employees, a mobile companion app delivers personalized health goals, sleep and stress trend analysis, and gamified wellness engagement through team challenges, leaderboards, and achievement milestones — turning health improvement into a social, competitive experience rather than a compliance checkbox. For employers, an HR dashboard aggregates anonymized workforce-level metrics — department stress indices, fatigue risk scores, productivity correlations — enabling data-driven decisions about workload distribution, scheduling, and wellness program ROI." },
       { type: "text", value: "Privacy was a core architectural constraint. All data flowing to the employer dashboard is aggregated and anonymized by design, with the system built to comply with GDPR, HIPAA, and Thailand's PDPA. Individual biometric data never leaves the employee's personal scope — employers only see population-level trends, never individual health records." },
       { type: "text", value: "The business model combines a one-time setup fee with recurring per-employee subscriptions, offering tiered plans that scale from basic health monitoring to advanced predictive analytics with custom integrations. The platform also extends the smartwatch beyond health — incorporating contactless payment, employee identification, and access control into a single wearable device." },
+      { type: "gallery", images: [
+        { src: "/awards/yumepro-2025/cover.jpg", caption: "YumePro Thailand 2025" },
+        { src: "/awards/yumepro-2025/team-photo.webp", caption: "Team Outliers" },
+      ]},
     ],
     image: "/awards/yumepro-2025/cover.jpg",
   },
