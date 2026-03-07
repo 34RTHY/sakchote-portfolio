@@ -4,6 +4,7 @@ export interface Project {
   slug: string;
   title: string;
   tagline: string;
+  metric?: string;
   status?: string;
   description: string[];
   content?: ContentBlock[];
@@ -24,6 +25,7 @@ export const projects: Project[] = [
   {
     slug: "ezzay-platform",
     title: "CULI — AI Exam Grading Platform",
+    metric: "39% less manual grading · IEEE published",
     tagline:
       "An enterprise-grade platform that automates language proficiency exam evaluation for Chulalongkorn University using OCR, GPT-based scoring, and vector similarity search.",
     description: [
@@ -149,6 +151,7 @@ export const projects: Project[] = [
   {
     slug: "homelab-kubernetes",
     title: "Hybrid Edge Kubernetes Cluster",
+    metric: "99.9% uptime · zero open ports",
     tagline:
       "A production-grade K3s cluster spanning a local Proxmox hypervisor and an AWS EC2 edge node, connected over a zero-trust Tailscale mesh with no open inbound ports.",
     description: [
@@ -200,13 +203,14 @@ export const projects: Project[] = [
       "GitOps application delivery with ArgoCD for automated, declarative deployments",
       "UFW default-deny firewalls with SSH locked to Tailscale IPs after bootstrap",
     ],
-    image: "/projects/homelab-kubernetes/cover.jpg",
+    image: "/projects/homelab-kubernetes/architecture.png",
     categories: ["Infrastructure"],
     featured: true,
   },
   {
     slug: "choudai",
     title: "Choudai",
+    metric: "Go · Clean Architecture · Escrow payments",
     tagline:
       "A Mercari-style C2C marketplace for Thai secondhand goods — built on Go, clean architecture, and a custom escrow system to eliminate transaction fraud.",
     status: "In Active Development",
@@ -256,6 +260,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/choudai/cover.jpg",
     categories: ["Full-Stack", "Backend"],
+    featured: true,
   },
   {
     slug: "resume-generator",
@@ -414,6 +419,7 @@ export const projects: Project[] = [
       { type: "text", value: "Most developer portfolios are either template-based or over-engineered. This one is purpose-built to demonstrate real engineering decisions: a custom content system that scales without a CMS, performance optimizations that produce measurable results, and a deployment pipeline that runs through production-grade infrastructure I built and maintain myself." },
 
       { type: "heading", value: "Performance Engineering" },
+      { type: "image", src: "/projects/portfolio/lighthouse.jpg", caption: "Lighthouse audit — 100 Performance, 96 Accessibility, 96 Best Practices, 100 SEO. FCP 0.3s, LCP 0.6s, TBT 0ms, CLS 0." },
       { type: "text", value: "Performance wasn't an afterthought — it drove architectural decisions from the start. The site went through a systematic optimization pass that targeted every layer of the stack: image pipeline, rendering strategy, font loading, animation performance, and CDN caching." },
       { type: "text", value: "The biggest win was the image pipeline. The site originally shipped raw multi-megabyte PNGs directly to browsers. After enabling Next.js image optimization with sharp, images are now converted to WebP on demand and served through responsive breakpoints. Source images were batch re-processed from 47 MB of raw PNGs down to 25 MB of high-quality JPGs — using q95 deliberately because two lossy passes (source → sharp → WebP) compound quality loss." },
       { type: "text", value: "Custom device sizes (640, 1080, 1920 — down from 8 defaults) reduce the number of cache variants, meaning the CDN warms faster and more visitors get cache hits. Combined with a 30-day minimumCacheTTL, this produces sub-15ms image loads from Cloudflare's edge after the first request." },
@@ -458,6 +464,7 @@ export const projects: Project[] = [
       { label: "GitHub", href: "https://github.com/34RTHY/sakchote-portfolio" },
     ],
     highlights: [
+      "Lighthouse 100/96/96/100 — FCP 0.3s, LCP 0.6s, TBT 0ms, CLS 0",
       "Sub-15ms image loads via Cloudflare edge caching with custom cache rules for /_next/image*",
       "47 MB → 25 MB source images, auto-converted to WebP with reduced breakpoints for faster CDN warming",
       "Zero-render animation system — useRef + direct DOM writes for 60fps glow, parallax, and hover effects",

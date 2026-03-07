@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/config";
+import { projects } from "@/data/projects";
+import { awards } from "@/data/awards";
 
 export const runtime = "edge";
 export const alt = `${siteConfig.name} — ${siteConfig.title}`;
@@ -17,15 +19,15 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#0a0a0a",
+          backgroundColor: "#0C0B0A",
           fontFamily: "sans-serif",
         }}
       >
         <div
           style={{
-            width: 64,
+            width: 80,
             height: 4,
-            backgroundColor: "#34d399",
+            background: "linear-gradient(to right, #E8C872, transparent)",
             marginBottom: 40,
           }}
         />
@@ -42,12 +44,31 @@ export default async function Image() {
         </div>
         <div
           style={{
-            fontSize: 28,
+            fontSize: 26,
             color: "#a3a3a3",
-            maxWidth: 700,
+            maxWidth: 800,
+            marginBottom: 40,
+            lineHeight: 1.4,
           }}
         >
           {siteConfig.tagline}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: 32,
+            fontSize: 18,
+            color: "#737373",
+          }}
+        >
+          <span>
+            <span style={{ color: "#E8C872", fontWeight: 600 }}>{projects.length}</span> Projects
+          </span>
+          <span>
+            <span style={{ color: "#E8C872", fontWeight: 600 }}>{awards.length}</span> Awards
+          </span>
+          <span style={{ color: "#E8C872", fontWeight: 600 }}>IEEE Published</span>
+          <span>{siteConfig.keywords}</span>
         </div>
       </div>
     ),

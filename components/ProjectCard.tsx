@@ -45,6 +45,11 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
         >
           {project.title}
         </h3>
+        {project.metric && (
+          <p className="text-xs font-medium text-gold-400 mb-2 tracking-wide">
+            {project.metric}
+          </p>
+        )}
         <p className="text-warm-400 text-sm mb-4 line-clamp-2">
           {project.tagline}
         </p>

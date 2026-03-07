@@ -13,20 +13,23 @@ export default function AboutSection() {
       <div className="grid md:grid-cols-2 gap-12">
         <div>
           <p className="text-warm-300 leading-relaxed mb-4">
-            I&apos;m a second-year Electrical Engineering student at Chulalongkorn
-            University specializing in Communication Engineering — but most of my
-            time goes into building software. From architecting an AI exam grading
-            platform deployed at Chulalongkorn&apos;s Language Institute to
-            co-authoring a peer-reviewed paper presented at IEEE TALE 2025 in
-            Macau, I work at the intersection of backend systems, AI pipelines,
-            and production infrastructure.
+            I build backend systems, AI pipelines, and production infrastructure.
+            My work includes an AI exam grading platform processing thousands of
+            handwritten exams for Chulalongkorn University, a hybrid Kubernetes
+            cluster spanning home servers and cloud edge nodes with zero open ports,
+            and a C2C marketplace with custom escrow payments built in Go.
           </p>
           <p className="text-warm-400 leading-relaxed mb-4">
-            I gravitate toward the hard parts of software engineering — escrow payment
-            systems that can&apos;t fail, pipelines that need to be
-            clinically accurate, Kubernetes clusters that span home servers and
-            cloud edge nodes with zero open ports. I compete in hackathons and
-            CTF competitions to sharpen these skills under pressure.
+            I co-authored a peer-reviewed paper presented at IEEE TALE 2025 in Macau,
+            placed top 10 nationally in Thailand Cyber Top Talent 2025, and have
+            won multiple hackathon awards. I gravitate toward problems that demand
+            reliability at scale — async job pipelines with retry logic, vector
+            similarity search for few-shot learning, and infrastructure-as-code
+            across Terraform, Ansible, and GitOps.
+          </p>
+          <p className="text-warm-400 leading-relaxed mb-4">
+            Second-year Electrical Engineering student at Chulalongkorn University,
+            specializing in Communication Engineering.
           </p>
           <p className="text-warm-400 leading-relaxed font-medium">
             Currently open to software engineering internship opportunities.

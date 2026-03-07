@@ -3,9 +3,9 @@ export const siteConfig = {
   fullName: "Sakchote Khemmarach",
   title: "Software Engineering Intern",
   tagline:
-    "Software engineer building hybrid cloud infrastructure and full-stack applications.",
+    "Building production systems — from AI pipelines grading thousands of exams to hybrid Kubernetes clusters with zero open ports.",
   location: "Based in Thailand",
-  keywords: "K8s / Terraform / React",
+  keywords: "Go / TypeScript / React / K8s",
   resumePath: "/resume.pdf",
   siteUrl: "https://sakchote.com",
 };

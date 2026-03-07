@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { projects } from "@/data/projects";
+import { awards } from "@/data/awards";
 import { siteConfig } from "@/data/config";
 import AnimatedTitle from "@/components/AnimatedTitle";
 import MagneticButton from "@/components/MagneticButton";
@@ -132,8 +133,12 @@ export default function HeroSection() {
             <span className="text-warm-100 font-medium">{projects.length}</span>{" "}
             Projects
           </span>
+          <span>
+            <span className="text-warm-100 font-medium">{awards.length}</span>{" "}
+            Awards
+          </span>
+          <span className="text-warm-100 font-medium">IEEE Published</span>
           <span>{siteConfig.keywords}</span>
-          <span>{siteConfig.location}</span>
         </div>
       </div>
       <ScrollIndicator />
